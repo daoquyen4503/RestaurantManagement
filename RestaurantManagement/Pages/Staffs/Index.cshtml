@@ -1,0 +1,72 @@
+﻿@page
+@model RestaurantManagement.Pages.Staffs.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Staff[0].Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Staff[0].Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Staff[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Staff[0].Fullname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Staff[0].Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Staff[0].Created_At)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Staff[0].Role)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Staff) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created_At)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role.Role_Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Staff_ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Staff_ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Staff_ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

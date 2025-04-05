@@ -1,0 +1,60 @@
+﻿@page
+@model RestaurantManagement.Pages.Reservations.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Reservation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Reservation.Reservation_ID" />
+            <div class="form-group">
+                <label asp-for="Reservation.Customer_ID" class="control-label"></label>
+                <select asp-for="Reservation.Customer_ID" class="form-control" asp-items="ViewBag.Customer_ID"></select>
+                <span asp-validation-for="Reservation.Customer_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reservation.Table_ID" class="control-label"></label>
+                <select asp-for="Reservation.Table_ID" class="form-control" asp-items="ViewBag.Table_ID"></select>
+                <span asp-validation-for="Reservation.Table_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reservation.Reservation_DateTime" class="control-label"></label>
+                <input asp-for="Reservation.Reservation_DateTime" class="form-control" />
+                <span asp-validation-for="Reservation.Reservation_DateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reservation.Number_of_People" class="control-label"></label>
+                <input asp-for="Reservation.Number_of_People" class="form-control" />
+                <span asp-validation-for="Reservation.Number_of_People" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reservation.Status" class="control-label"></label>
+                <input asp-for="Reservation.Status" class="form-control" />
+                <span asp-validation-for="Reservation.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reservation.Note" class="control-label"></label>
+                <input asp-for="Reservation.Note" class="form-control" />
+                <span asp-validation-for="Reservation.Note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

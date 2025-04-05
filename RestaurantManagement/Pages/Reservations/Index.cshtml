@@ -1,0 +1,66 @@
+﻿@page
+@model RestaurantManagement.Pages.Reservations.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation[0].Reservation_DateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation[0].Number_of_People)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation[0].Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation[0].Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation[0].Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation[0].Table)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Reservation) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reservation_DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number_of_People)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Table.Table_ID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Reservation_ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Reservation_ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Reservation_ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
